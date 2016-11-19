@@ -20,6 +20,8 @@ type WebhookResponse struct {
 }
 
 func init() {
+	botStatus = "enabled"
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		incomingText := r.PostFormValue("text")
 		if incomingText != "" && r.PostFormValue("user_id") != "" {
@@ -39,7 +41,7 @@ func init() {
 					markovChain.Save(stateFile)
 				}()
 
-				if botStatus != "disabled" && (chatty || r.PostFormValue("user_id") != botUsername) {
+				if botStatus != "disabled" && (chatty || r.PostFormValue("user_name") != botUsername) {
 					if rand.Intn(100) <= responseChance || seeMyName(text) {
 						w.Write(generateResponse(botUsername, markovChain.Generate(numWords), true))
 					}

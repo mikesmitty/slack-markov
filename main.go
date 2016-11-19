@@ -36,8 +36,6 @@ var (
 
 func init() {
 	rand.Seed(time.Now().UnixNano()) // Seed the random number generator.
-
-	botStatus = "enabled"
 }
 
 func main() {
