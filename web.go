@@ -31,7 +31,7 @@ func init() {
 				command := strings.TrimSpace(strings.Replace(text, botControlWord, "", 0))
 				botControl(command)
 			} else {
-				if text != "" && strings.Contains(text, botControlWord) {
+				if text != "" && !strings.Contains(text, botControlWord) {
 					markovChain.Write(text)
 				}
 
