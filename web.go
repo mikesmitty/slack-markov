@@ -25,6 +25,7 @@ func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		incomingText := r.PostFormValue("text")
 		if incomingText != "" && r.PostFormValue("user_id") != "" {
+			log.Printf("user_id:%s\nuser_name: %s", r.PostFormValue("user_id"), r.PostFormValue("user_name")) // Debug
 			text := parseText(incomingText)
 			log.Printf("Handling incoming request: %s", text)
 
