@@ -29,7 +29,7 @@ func init() {
 			text := parseText(incomingText)
 			log.Printf("Handling incoming request: %s", text)
 
-			if strings.HasPrefix(text, botControlWord) {
+			if strings.HasPrefix(text, botControlWord) && r.PostFormValue("user_name") != botAPIName {
 				// Strip the keyword from our command
 				command := strings.TrimSpace(strings.Replace(text, botControlWord, "", 0))
 				w.Write(botControl(command))
