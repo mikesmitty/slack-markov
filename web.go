@@ -31,7 +31,7 @@ func init() {
 
 			if strings.HasPrefix(text, botControlWord) && r.PostFormValue("user_name") != botAPIName {
 				// Strip the keyword from our command
-				command := strings.TrimSpace(strings.Replace(text, botControlWord, "", 0))
+				command := strings.TrimSpace(strings.Replace(text, botControlWord, "", 1))
 				w.Write(botControl(command))
 			} else {
 				if text != "" && !strings.Contains(text, botControlWord) {
