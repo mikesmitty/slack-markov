@@ -9,6 +9,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -18,6 +19,7 @@ var (
 	botAPIName      string
 	botStatus       string
 	botUsername     string
+	botUsernameLC   string
 	chatty          bool
 	httpPort        int
 	numWords        int
@@ -105,6 +107,9 @@ func main() {
 	} else {
 		log.Printf("Not enabling twitter support")
 	}
+
+	// Create a lower-case version of the bot name for matching later
+	botUsernameLC = strings.ToLower(botUsername)
 
 	// Start the webserver
 	StartServer(httpPort)

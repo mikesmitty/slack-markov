@@ -77,9 +77,11 @@ func generateResponse(username, text string, twitter bool) []byte {
 }
 
 func seeMyName(text string) bool {
+	text = strings.ToLower(text)
+
 	if alwaysReply {
-		return strings.Contains(text, botUsername)
+		return strings.Contains(text, botUsernameLC)
 	} else {
-		return strings.HasPrefix(text, botUsername)
+		return strings.HasPrefix(text, botUsernameLC)
 	}
 }
